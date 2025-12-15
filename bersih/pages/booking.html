@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Booking PahlawanBERSIH - Pesan layanan cleaning service online">
+    <title>Booking - PahlawanBERSIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .booking-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #27ae60 100%);
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .booking-steps {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .booking-form {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-dark-gray);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-roboto);
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .service-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-option:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+        
+        .service-option.selected {
+            border-color: var(--primary-green);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .date-time-picker {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .time-slot {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--primary-green);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+        
+        .price-summary {
+            background: var(--bg-light-gray);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .promo-code {
+            display: flex;
+            gap: 10px;
+            margin-top: var(--spacing-md);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .payment-method {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary-green);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary-green);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .payment-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .confirmation {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--primary-light-blue);
+            border-radius: 12px;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .confirmation-icon {
+            font-size: 64px;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-green);
+        }
+        
+        .confirmation-details {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            margin: var(--spacing-lg) 0;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .info-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .included-features {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p class="text-white">Hubungi Kami (+62) 8123456789 WA Ready!</p>
+                <p class="text-white">|</p>
+                <a href="mailto:info@pahlawanbersih.co.id" class="text-white">info@pahlawanbersih.co.id</a>
+            </div>
+            <div class="top-bar-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">PahlawanBERSIH</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html">HOME</a></li>
+                <li class="nav-item"><a href="promo.html">PROMO</a></li>
+                <li class="nav-item"><a href="layanan.html">LAYANAN</a></li>
+                <li class="nav-item"><a href="testimonial.html">TESTIMONIAL</a></li>
+                <li class="nav-item"><a href="gallery.html">GALLERY</a></li>
+                <li class="nav-item"><a href="profile.html">PROFILE</a></li>
+                <li class="nav-item"><a href="kontak.html">KONTAK</a></li>
+                <li class="nav-item active">
+                    <a href="booking.html" class="booking-btn">
+                        <span>BOOKING</span>
+                        <div class="vertical-border">
+                            <span>→</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Booking Hero -->
+    <section class="booking-hero">
+        <div class="container">
+            <h1 class="hero-title" style="color: white; font-size: 42px;">Booking Layanan 📅</h1>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9); font-size: 20px;">
+                Pesan layanan cleaning service dengan mudah dan cepat
+            </p>
+        </div>
+    </section>
+
+    <!-- Booking Steps -->
+    <section class="container">
+        <div class="booking-steps">
+            <div class="step fade-in">
+                <div class="step-number">1</div>
+                <h3>Pilih Layanan</h3>
+                <p>Pilih jenis layanan yang Anda butuhkan</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-number">2</div>
+                <h3>Isi Data</h3>
+                <p>Isi formulir dengan data lengkap</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-number">3</div>
+                <h3>Pilih Jadwal</h3>
+                <p>Tentukan tanggal dan waktu layanan</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-number">4</div>
+                <h3>Konfirmasi</h3>
+                <p>Konfirmasi booking dan pembayaran</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="container">
+        <div class="booking-form fade-in">
+            <form id="bookingForm">
+                <!-- Step 1: Service Selection -->
+                <div class="form-group">
+                    <h2 style="margin-bottom: var(--spacing-md); color: var(--primary-purple);">1. Pilih Layanan</h2>
+                    <div class="service-options">
+                        <div class="service-option" data-service="house" data-price="250000">
+                            <div class="service-icon">🏠</div>
+                            <h4>House Service</h4>
+                            <p>Rp 250.000 (semua termasuk)</p>
+                        </div>
+                        <div class="service-option" data-service="office" data-price="500000">
+                            <div class="service-icon">🏢</div>
+                            <h4>Office Service</h4>
+                            <p>Rp 500.000 (semua termasuk)</p>
+                        </div>
+                        <div class="service-option" data-service="garden" data-price="300000">
+                            <div class="service-icon">🌿</div>
+                            <h4>Gardening Service</h4>
+                            <p>Rp 300.000 (semua termasuk)</p>
+                        </div>
+                        <div class="service-option" data-service="deep" data-price="750000">
+                            <div class="service-icon">✨</div>
+                            <h4>Deep Cleaning</h4>
+                            <p>Rp 750.000 (semua termasuk)</p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedService" required>
+                </div>
+
+                <!-- Step 2: Customer Information -->
+                <div class="form-group">
+                    <h2 style="margin-bottom: var(--spacing-md); color: var(--primary-purple);">2. Data Diri</h2>
+                    <div class="form-row">
+                        <div>
+                            <label for="bookingName">Nama Lengkap</label>
+                            <input type="text" id="bookingName" required>
+                        </div>
+                        <div>
+                            <label for="bookingPhone">Nomor Telepon</label>
+                            <input type="tel" id="bookingPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="bookingEmail">Email</label>
+                            <input type="email" id="bookingEmail" required>
+                        </div>
+                        <div>
+                            <label for="bookingAddress">Alamat Lengkap</label>
+                            <input type="text" id="bookingAddress" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="bookingArea">
+                                Luas Area (m²)
+                                <span style="font-weight: normal; color: #666; font-size: 12px;">
+                                    * Harga sudah termasuk untuk semua ukuran
+                                </span>
+                            </label>
+                            <input type="number" id="bookingArea" min="50" max="500" value="100" required>
+                        </div>
+                        <div>
+                            <label for="bookingRooms">
+                                Jumlah Ruangan
+                                <span style="font-weight: normal; color: #666; font-size: 12px;">
+                                    * Harga sudah termasuk untuk semua jumlah
+                                </span>
+                            </label>
+                            <input type="number" id="bookingRooms" min="1" max="10" value="3" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Included Features Info -->
+                    <div class="included-features">
+                        <p style="margin: 0; font-size: 14px; color: var(--primary-green);">
+                            ✅ <strong>Semua sudah termasuk dalam harga:</strong>
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 5px; font-size: 13px;">
+                            <div>• Luas area berapapun</div>
+                            <div>• Jumlah ruangan berapapun</div>
+                            <div>• Peralatan lengkap</div>
+                            <div>• Bahan pembersih</div>
+                            <div>• Tim profesional</div>
+                            <div>• Garansi hasil</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Schedule Selection -->
+                <div class="form-group">
+                    <h2 style="margin-bottom: var(--spacing-md); color: var(--primary-purple);">3. Pilih Jadwal</h2>
+                    <div class="date-time-picker">
+                        <div>
+                            <label for="bookingDate">Tanggal</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                        <div>
+                            <label>Waktu</label>
+                            <div class="time-slots">
+                                <div class="time-slot" data-time="08:00">08:00</div>
+                                <div class="time-slot" data-time="10:00">10:00</div>
+                                <div class="time-slot" data-time="13:00">13:00</div>
+                                <div class="time-slot" data-time="15:00">15:00</div>
+                                <div class="time-slot" data-time="17:00">17:00</div>
+                            </div>
+                            <input type="hidden" id="selectedTime" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Special Instructions -->
+                <div class="form-group">
+                    <label for="bookingNotes">Catatan Khusus (Opsional)</label>
+                    <textarea id="bookingNotes" rows="3" placeholder="Contoh: Ada hewan peliharaan, alergi terhadap produk tertentu, area khusus yang perlu perhatian lebih, dll."></textarea>
+                </div>
+
+                <!-- Price Summary - VERSI SEDERHANA TANPA BIAYA TAMBAHAN -->
+                <div class="price-summary">
+                    <h3 style="margin-bottom: var(--spacing-md);">Ringkasan Biaya</h3>
+                    <div class="price-item" id="price-service">
+                        <span id="service-name">House Service</span>
+                        <span id="service-price">Rp 250.000</span>
+                    </div>
+                    
+                    <!-- Informasi bahwa semua sudah termasuk -->
+                    <div class="price-item" style="border-bottom: none; color: #666; font-size: 14px;">
+                        <span>✅ Semua sudah termasuk:</span>
+                        <span style="color: var(--primary-green); font-weight: bold;">Termasuk</span>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <input type="text" id="promoCode" placeholder="Masukkan kode promo" style="flex: 1;">
+                        <button type="button" id="applyPromo" class="btn btn-outline">Terapkan</button>
+                    </div>
+                    
+                    <!-- Jika ada diskon, tampilkan di sini -->
+                    <div class="price-item" id="price-discount" style="display: none;">
+                        <span>Diskon Promo</span>
+                        <span id="discount-amount" style="color: #e74c3c;"></span>
+                    </div>
+                    
+                    <div class="price-total">
+                        <span>Total</span>
+                        <span id="total-price">Rp 250.000</span>
+                    </div>
+                    
+                    <p class="info-text">
+                        * Harga sudah final, tidak ada biaya tambahan untuk luas area dan jumlah ruangan
+                    </p>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-group">
+                    <h2 style="margin-bottom: var(--spacing-md); color: var(--primary-purple);">4. Metode Pembayaran</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-payment="transfer">
+                            <div class="payment-icon">🏦</div>
+                            <h4>Transfer Bank</h4>
+                        </div>
+                        <div class="payment-method" data-payment="qris">
+                            <div class="payment-icon">📱</div>
+                            <h4>QRIS</h4>
+                        </div>
+                        <div class="payment-method" data-payment="cash">
+                            <div class="payment-icon">💵</div>
+                            <h4>Bayar di Tempat</h4>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedPayment" required>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group">
+                    <label style="display: flex; align-items: flex-start; gap: 10px;">
+                        <input type="checkbox" id="termsAgreement" required style="width: auto;">
+                        <span>Saya setuju dengan <a href="#" style="color: var(--primary-green);">Syarat & Ketentuan</a> dan <a href="#" style="color: var(--primary-green);">Kebijakan Privasi</a> yang berlaku</span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 18px;">
+                    Konfirmasi Booking
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal (Initially Hidden) -->
+    <div id="confirmationModal" class="confirmation" style="display: none;">
+        <div class="confirmation-icon">✅</div>
+        <h2 style="margin-bottom: var(--spacing-md); color: var(--primary-green);">Booking Berhasil!</h2>
+        <p style="margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+            Terima kasih telah memesan layanan PahlawanBERSIH. Detail booking telah dikirim ke email Anda. 
+            Tim kami akan menghubungi Anda untuk konfirmasi jadwal.
+        </p>
+        
+        <!-- Booking Details -->
+        <div class="confirmation-details" id="confirmationDetails">
+            <h3 style="color: var(--primary-purple); margin-bottom: 15px;">Detail Booking:</h3>
+            <div id="bookingDetailsContent">
+                <!-- Details will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="window.location.href='../index.html'">
+                Kembali ke Home
+            </button>
+            <button class="btn btn-outline" onclick="printBookingDetails()">
+                Cetak Invoice
+            </button>
+            <button class="btn" style="background: #25D366; color: white;" 
+                    onclick="sendWhatsApp()">
+                💬 WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="container" style="margin: var(--spacing-xl) 0;">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--primary-purple);">
+            Informasi Booking ℹ️
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+            <div style="background: var(--bg-light-gray); padding: var(--spacing-md); border-radius: 8px;">
+                <h3 style="color: var(--primary-green);">💰 Harga Tetap</h3>
+                <p>Harga sudah final dan termasuk semua biaya. Tidak ada biaya tambahan untuk luas area atau jumlah ruangan.</p>
+            </div>
+            <div style="background: var(--bg-light-gray); padding: var(--spacing-md); border-radius: 8px;">
+                <h3 style="color: var(--primary-green);">📅 Jadwal</h3>
+                <p>Booking minimal 2 hari sebelum tanggal layanan. Konfirmasi jadwal akan dikirim via WhatsApp/Email.</p>
+            </div>
+            <div style="background: var(--bg-light-gray); padding: var(--spacing-md); border-radius: 8px;">
+                <h3 style="color: var(--primary-green);">🔄 Pembatalan</h3>
+                <p>Pembatalan gratis 24 jam sebelum jadwal. Kurang dari 24 jam dikenakan biaya 25%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">PahlawanBERSIH</div>
+                    <p class="footer-description">
+                        Menyediakan jasa cleaning service profesional untuk rumah dan kantor Anda sejak 2015. 
+                        Komitmen kami adalah memberikan layanan terbaik dengan hasil maksimal.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><strong>Telepon:</strong> (+62) 8123456789</p>
+                    <p><strong>Email:</strong> info@pahlawanbersih.co.id</p>
+                    <p><strong>Alamat:</strong> Jl. Kebersihan No. 123, Jakarta</p>
+                    <div class="top-bar-icons" style="margin-top: 15px;">
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PahlawanBERSIH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Service Selection dengan harga yang benar
+        let selectedService = 'house';
+        let selectedServicePrice = 250000;
+        let promoDiscount = 0;
+        
+        const servicePrices = {
+            'house': 250000,
+            'office': 500000,
+            'garden': 300000,
+            'deep': 750000
+        };
+        
+        const serviceNames = {
+            'house': 'House Service',
+            'office': 'Office Service',
+            'garden': 'Gardening Service',
+            'deep': 'Deep Cleaning'
+        };
+        
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.service-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                
+                selectedService = this.getAttribute('data-service');
+                selectedServicePrice = parseInt(this.getAttribute('data-price'));
+                document.getElementById('selectedService').value = selectedService;
+                
+                // Update service name in price summary
+                document.getElementById('service-name').textContent = serviceNames[selectedService];
+                document.getElementById('service-price').textContent = formatCurrency(selectedServicePrice);
+                
+                updatePriceSummary();
+            });
+        });
+        
+        // Time Slot Selection
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                document.getElementById('selectedTime').value = this.getAttribute('data-time');
+            });
+        });
+        
+        // Payment Method Selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                document.getElementById('selectedPayment').value = this.getAttribute('data-payment');
+            });
+        });
+        
+        // Price Calculation Function - VERSI SEDERHANA TANPA BIAYA TAMBAHAN
+        function updatePriceSummary() {
+            // Base price from selected service - TIDAK ADA BIAYA TAMBAHAN
+            const basePrice = selectedServicePrice;
+            
+            // Calculate total with promo discount
+            const discountAmount = basePrice * promoDiscount;
+            const total = basePrice - discountAmount;
+            
+            // Update service price display
+            document.getElementById('service-price').textContent = formatCurrency(basePrice);
+            
+            // Update total price display
+            document.getElementById('total-price').textContent = formatCurrency(total);
+            
+            // If there's a discount, show discount line
+            if (promoDiscount > 0) {
+                document.getElementById('price-discount').style.display = 'flex';
+                document.getElementById('discount-amount').textContent = '- ' + formatCurrency(discountAmount);
+            } else {
+                document.getElementById('price-discount').style.display = 'none';
+            }
+        }
+        
+        // Format currency helper function
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+        
+        // Update price when area or rooms change - TIDAK PERLU KARENA TIDAK ADA BIAYA TAMBAHAN
+        // Biarkan kosong karena tidak ada perubahan harga berdasarkan area/ruangan
+        
+        // Apply promo code
+        document.getElementById('applyPromo').addEventListener('click', function() {
+            const promoCode = document.getElementById('promoCode').value.toUpperCase();
+            const validPromos = {
+                'BERSIH10': 0.10,  // 10% discount
+                'NEWCUSTOMER': 0.50, // 50% discount for new customers
+                'PAKETBULANAN': 0.30  // 30% discount for monthly package
+            };
+            
+            if (validPromos[promoCode]) {
+                promoDiscount = validPromos[promoCode];
+                alert(`Promo ${promoCode} berhasil diterapkan! Diskon ${promoDiscount * 100}%`);
+                updatePriceSummary();
+            } else if (promoCode) {
+                alert('Kode promo tidak valid');
+                promoDiscount = 0;
+                updatePriceSummary();
+            }
+        });
+        
+        // Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate selections
+            if (!document.getElementById('selectedService').value) {
+                alert('Silakan pilih jenis layanan');
+                return;
+            }
+            
+            if (!document.getElementById('selectedTime').value) {
+                alert('Silakan pilih waktu layanan');
+                return;
+            }
+            
+            if (!document.getElementById('selectedPayment').value) {
+                alert('Silakan pilih metode pembayaran');
+                return;
+            }
+            
+            if (!document.getElementById('termsAgreement').checked) {
+                alert('Silakan setujui Syarat & Ketentuan');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Memproses...';
+            submitBtn.disabled = true;
+            
+            // Collect booking data for confirmation
+            const bookingData = {
+                service: serviceNames[selectedService],
+                name: document.getElementById('bookingName').value,
+                email: document.getElementById('bookingEmail').value,
+                phone: document.getElementById('bookingPhone').value,
+                address: document.getElementById('bookingAddress').value,
+                area: document.getElementById('bookingArea').value,
+                rooms: document.getElementById('bookingRooms').value,
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('selectedTime').value,
+                notes: document.getElementById('bookingNotes').value,
+                total: document.getElementById('total-price').textContent,
+                payment: document.getElementById('selectedPayment').value,
+                paymentText: document.getElementById('selectedPayment').value === 'transfer' ? 'Transfer Bank' : 
+                            document.getElementById('selectedPayment').value === 'qris' ? 'QRIS' : 'Bayar di Tempat'
+            };
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show booking details in confirmation
+                document.getElementById('bookingDetailsContent').innerHTML = `
+                    <p><strong>Layanan:</strong> ${bookingData.service}</p>
+                    <p><strong>Nama:</strong> ${bookingData.name}</p>
+                    <p><strong>Email:</strong> ${bookingData.email}</p>
+                    <p><strong>Telepon:</strong> ${bookingData.phone}</p>
+                    <p><strong>Alamat:</strong> ${bookingData.address}</p>
+                    <p><strong>Luas Area:</strong> ${bookingData.area}m²</p>
+                    <p><strong>Jumlah Ruangan:</strong> ${bookingData.rooms}</p>
+                    <p><strong>Tanggal:</strong> ${bookingData.date}</p>
+                    <p><strong>Waktu:</strong> ${bookingData.time}</p>
+                    ${bookingData.notes ? `<p><strong>Catatan:</strong> ${bookingData.notes}</p>` : ''}
+                    <p><strong>Metode Pembayaran:</strong> ${bookingData.paymentText}</p>
+                    <p><strong>Total Biaya:</strong> ${bookingData.total} <span style="color: var(--primary-green); font-size: 14px;">(semua sudah termasuk)</span></p>
+                    <p style="color: var(--primary-green); font-weight: bold; margin-top: 15px;">
+                        Booking ID: PB-${Date.now().toString().slice(-8)}
+                    </p>
+                `;
+                
+                // Hide form and show confirmation
+                this.style.display = 'none';
+                document.getElementById('confirmationModal').style.display = 'block';
+                
+                // Scroll to confirmation
+                document.getElementById('confirmationModal').scrollIntoView({ behavior: 'smooth' });
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+        
+        // Print booking details
+        function printBookingDetails() {
+            const printContent = `
+                <div style="padding: 30px; font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h1 style="color: #35025F; margin-bottom: 5px;">PAHLAWANBERSIH</h1>
+                        <p style="color: #666; margin-bottom: 20px;">Invoice & Konfirmasi Booking</p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <p><strong>Booking ID:</strong> PB-${Date.now().toString().slice(-8)}</p>
+                        <p><strong>Tanggal Invoice:</strong> ${new Date().toLocaleDateString('id-ID')}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: #2ecc71; border-bottom: 2px solid #2ecc71; padding-bottom: 5px;">Detail Pelanggan</h3>
+                        <p><strong>Nama:</strong> ${document.getElementById('bookingName').value}</p>
+                        <p><strong>Email:</strong> ${document.getElementById('bookingEmail').value}</p>
+                        <p><strong>Telepon:</strong> ${document.getElementById('bookingPhone').value}</p>
+                        <p><strong>Alamat:</strong> ${document.getElementById('bookingAddress').value}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: #2ecc71; border-bottom: 2px solid #2ecc71; padding-bottom: 5px;">Detail Layanan</h3>
+                        <p><strong>Layanan:</strong> ${document.getElementById('service-name').textContent}</p>
+                        <p><strong>Tanggal:</strong> ${document.getElementById('bookingDate').value}</p>
+                        <p><strong>Waktu:</strong> ${document.getElementById('selectedTime').value}</p>
+                        <p><strong>Luas Area:</strong> ${document.getElementById('bookingArea').value}m²</p>
+                        <p><strong>Jumlah Ruangan:</strong> ${document.getElementById('bookingRooms').value}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: #2ecc71; border-bottom: 2px solid #2ecc71; padding-bottom: 5px;">Rincian Biaya</h3>
+                        <div style="display: flex; justify-content: space-between; margin: 8px 0;">
+                            <span>${document.getElementById('service-name').textContent}</span>
+                            <span>${document.getElementById('service-price').textContent}</span>
+                        </div>
+                        
+                        <!-- Informasi bahwa semua sudah termasuk -->
+                        <div style="background: rgba(46, 204, 113, 0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">
+                            <p style="margin: 0; color: #2ecc71; font-size: 14px;">
+                                ✅ <strong>Semua sudah termasuk dalam harga:</strong>
+                            </p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 5px; font-size: 12px;">
+                                <div>• Luas area berapapun</div>
+                                <div>• Jumlah ruangan berapapun</div>
+                                <div>• Peralatan lengkap</div>
+                                <div>• Bahan pembersih</div>
+                            </div>
+                        </div>
+                        
+                        <div style="border-top: 2px solid #ddd; margin-top: 15px; padding-top: 15px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold;">
+                                <span>TOTAL</span>
+                                <span>${document.getElementById('total-price').textContent}</span>
+                            </div>
+                            <p style="font-size: 12px; color: #666; margin-top: 5px;">
+                                * Harga sudah final, tidak ada biaya tambahan
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; text-align: center;">
+                        <p>Terima kasih telah menggunakan layanan PahlawanBERSIH</p>
+                        <p>Jl. Kebersihan No. 123, Jakarta | Telp: (021) 12345678</p>
+                        <p>www.pahlawanbersih.co.id | info@pahlawanbersih.co.id</p>
+                    </div>
+                </div>
+            `;
+            
+            const win = window.open('', '_blank');
+            win.document.write(printContent);
+            win.document.close();
+            win.print();
+        }
+        
+        // WhatsApp function
+        function sendWhatsApp() {
+            const name = document.getElementById('bookingName').value;
+            const service = document.getElementById('service-name').textContent;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('selectedTime').value;
+            const total = document.getElementById('total-price').textContent;
+            const area = document.getElementById('bookingArea').value;
+            const rooms = document.getElementById('bookingRooms').value;
+            
+            const message = `Halo PahlawanBERSIH, saya ${name} sudah booking:\n\n` +
+                           `Layanan: ${service}\n` +
+                           `Tanggal: ${date}\n` +
+                           `Waktu: ${time}\n` +
+                           `Luas Area: ${area}m²\n` +
+                           `Jumlah Ruangan: ${rooms}\n` +
+                           `Total: ${total} (semua sudah termasuk)\n\n` +
+                           `Silakan konfirmasi booking saya. Terima kasih!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/628123456789?text=${encodedMessage}`, '_blank');
+        }
+        
+        // Set minimum date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('bookingDate').min = tomorrow.toISOString().split('T')[0];
+        
+        // Set default date to tomorrow
+        document.getElementById('bookingDate').value = tomorrow.toISOString().split('T')[0];
+        
+        // Phone number formatting
+        document.getElementById('bookingPhone').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 4) {
+                value = value.substring(0, 4) + '-' + value.substring(4);
+            }
+            if (value.length > 9) {
+                value = value.substring(0, 9) + '-' + value.substring(9, 13);
+            }
+            this.value = value;
+        });
+        
+        // Initialize with default selections
+        document.querySelector('.service-option[data-service="house"]').click();
+        document.querySelector('.time-slot[data-time="08:00"]').click();
+        document.querySelector('.payment-method[data-payment="transfer"]').click();
+        updatePriceSummary();
+        
+        // Area validation - hanya validasi, tidak mengubah harga
+        document.getElementById('bookingArea').addEventListener('change', function() {
+            const area = parseInt(this.value);
+            if (area > 300) {
+                alert('Untuk area di atas 300m², silakan hubungi customer service untuk penawaran khusus.');
+            }
+            if (area < 50) {
+                alert('Luas area minimum adalah 50m².');
+                this.value = 50;
+            }
+        });
+        
+        // Room validation - hanya validasi, tidak mengubah harga
+        document.getElementById('bookingRooms').addEventListener('change', function() {
+            const rooms = parseInt(this.value);
+            if (rooms > 10) {
+                alert('Untuk lebih dari 10 ruangan, silakan hubungi customer service untuk penawaran khusus.');
+            }
+            if (rooms < 1) {
+                alert('Jumlah ruangan minimum adalah 1.');
+                this.value = 1;
+            }
+        });
+    </script>
+</body>
+</html>

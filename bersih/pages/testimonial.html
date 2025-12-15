@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Testimoni PahlawanBERSIH - Apa kata pelanggan kami">
+    <title>Testimonial - PahlawanBERSIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .testimonial-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .rating {
+            color: #FFD700;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        
+        .testimonial-author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 32px;
+        }
+        
+        .testimonial-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-md);
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .testimonial-date {
+            font-style: italic;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .testimonial-form {
+            background: var(--bg-light-gray);
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-roboto);
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        
+        .star-rating span {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+        }
+        
+        .star-rating span.active {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p class="text-white">Hubungi Kami (+62) 8123456789 WA Ready!</p>
+                <p class="text-white">|</p>
+                <a href="mailto:info@pahlawanbersih.co.id" class="text-white">info@pahlawanbersih.co.id</a>
+            </div>
+            <div class="top-bar-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">PahlawanBERSIH</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html">HOME</a></li>
+                <li class="nav-item"><a href="promo.html">PROMO</a></li>
+                <li class="nav-item"><a href="layanan.html">LAYANAN</a></li>
+                <li class="nav-item active"><a href="testimonial.html">TESTIMONIAL</a></li>
+                <li class="nav-item"><a href="gallery.html">GALLERY</a></li>
+                <li class="nav-item"><a href="profile.html">PROFILE</a></li>
+                <li class="nav-item"><a href="kontak.html">KONTAK</a></li>
+                <li class="nav-item">
+                    <a href="booking.html" class="booking-btn">
+                        <span>BOOKING</span>
+                        <div class="vertical-border">
+                            <span>→</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Testimonial Hero -->
+    <section class="testimonial-hero">
+        <div class="container">
+            <h1 class="hero-title" style="color: white; font-size: 42px;">Apa Kata Pelanggan Kami 🌟</h1>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9); font-size: 20px;">
+                Ribuan pelanggan telah mempercayakan kebersihan kepada kami
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="container">
+        <div class="stats-grid">
+            <div class="stat-card fade-in">
+                <div class="stat-number">4.9</div>
+                <div class="stat-label">Rating Average</div>
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">2.5K+</div>
+                <div class="stat-label">Pelanggan Bahagia</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Kepuasan Pelanggan</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" style="background-color: white;">
+        <div class="container">
+            <div class="testimonials-header fade-in">
+                <h2 class="testimonials-title">Testimoni Terbaru</h2>
+                <p class="services-subtitle">Pengalaman langsung dari pelanggan kami</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👨</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Pelayanan luar biasa! Tim sangat profesional dan detail. Rumah saya yang awalnya berantakan sekarang seperti baru lagi. Recommended banget!"
+                    </p>
+                    <p class="testimonial-author">- Budi Santoso, Jakarta</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">House Service</span>
+                        <span class="testimonial-date">15 Nov 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👩</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Sudah 2 tahun langganan, kualitas selalu konsisten. Staffnya ramah-ramah dan pekerjaan sangat teliti. Harga juga sangat reasonable untuk kualitas yang diberikan."
+                    </p>
+                    <p class="testimonial-author">- Sari Wijaya, Bandung</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">Paket Bulanan</span>
+                        <span class="testimonial-date">10 Nov 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👨‍💼</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Kantor kami selalu menggunakan jasa PahlawanBERSIH. Hasil pekerjaan sangat memuaskan, tim tepat waktu, dan peralatan lengkap. Sangat membantu produktivitas kerja."
+                    </p>
+                    <p class="testimonial-author">- Ahmad Rizki, Surabaya</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">Office Service</span>
+                        <span class="testimonial-date">5 Nov 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👵</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Sebagai lansia, saya sangat terbantu dengan layanan ini. Staffnya sabar dan membantu membersihkan area yang sulit dijangkau. Terima kasih PahlawanBERSIH!"
+                    </p>
+                    <p class="testimonial-author">- Marni, Bogor</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">Deep Cleaning</span>
+                        <span class="testimonial-date">1 Nov 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👨‍👩‍👧‍👦</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Paket keluarga sangat worth it! Harga terjangkau untuk hasil yang maksimal. Anak-anak pun senang karena rumah jadi bersih dan wangi."
+                    </p>
+                    <p class="testimonial-author">- Keluarga Wijaya, Tangerang</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">Paket Keluarga</span>
+                        <span class="testimonial-date">28 Okt 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-author-img">👨‍🌾</div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Taman saya yang awalnya tidak terurus sekarang jadi cantik sekali. Tim gardening sangat berpengalaman dan tahu cara merawat tanaman dengan baik."
+                    </p>
+                    <p class="testimonial-author">- Joko, Depok</p>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-service">Gardening Service</span>
+                        <span class="testimonial-date">25 Okt 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Testimonial Form -->
+    <section class="container">
+        <div class="testimonial-form fade-in">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-lg);">Bagikan Pengalaman Anda</h2>
+            <form id="testimonialForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">Kota</label>
+                    <input type="text" id="city" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Layanan yang Digunakan</label>
+                    <select id="service" required>
+                        <option value="">Pilih Layanan</option>
+                        <option value="house">House Service</option>
+                        <option value="office">Office Service</option>
+                        <option value="gardening">Gardening Service</option>
+                        <option value="deep">Deep Cleaning</option>
+                        <option value="car">Car Cleaning</option>
+                        <option value="monthly">Paket Bulanan</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating">
+                        <span data-rating="1">☆</span>
+                        <span data-rating="2">☆</span>
+                        <span data-rating="3">☆</span>
+                        <span data-rating="4">☆</span>
+                        <span data-rating="5">☆</span>
+                    </div>
+                    <input type="hidden" id="rating" value="5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="testimonial">Testimoni Anda</label>
+                    <textarea id="testimonial" rows="5" required placeholder="Bagikan pengalaman Anda menggunakan layanan kami..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="photo">Foto (Opsional)</label>
+                    <input type="file" id="photo" accept="image/*">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Testimoni</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">PahlawanBERSIH</div>
+                    <p class="footer-description">
+                        Menyediakan jasa cleaning service profesional untuk rumah dan kantor Anda sejak 2015. 
+                        Komitmen kami adalah memberikan layanan terbaik dengan hasil maksimal.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><strong>Telepon:</strong> (+62) 8123456789</p>
+                    <p><strong>Email:</strong> info@pahlawanbersih.co.id</p>
+                    <p><strong>Alamat:</strong> Jl. Kebersihan No. 123, Jakarta</p>
+                    <div class="top-bar-icons" style="margin-top: 15px;">
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PahlawanBERSIH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Star Rating
+        const stars = document.querySelectorAll('.star-rating span');
+        const ratingInput = document.getElementById('rating');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                ratingInput.value = rating;
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.add('active');
+                        s.textContent = '★';
+                    } else {
+                        s.classList.remove('active');
+                        s.textContent = '☆';
+                    }
+                });
+            });
+        });
+        
+        // Initialize with 5 stars
+        stars.forEach((star, index) => {
+            if (index < 5) {
+                star.classList.add('active');
+                star.textContent = '★';
+            }
+        });
+        
+        // Testimonial Form Submission
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Terima kasih atas testimoni Anda! Testimoni akan ditampilkan setelah proses moderasi.');
+                this.reset();
+                
+                // Reset stars
+                stars.forEach((star, index) => {
+                    if (index < 5) {
+                        star.classList.add('active');
+                        star.textContent = '★';
+                    } else {
+                        star.classList.remove('active');
+                        star.textContent = '☆';
+                    }
+                });
+                ratingInput.value = '5';
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

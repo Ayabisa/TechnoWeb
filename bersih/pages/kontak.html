@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontak PahlawanBERSIH - Hubungi kami untuk konsultasi dan booking">
+    <title>Kontak - PahlawanBERSIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .contact-info {
+            background: var(--bg-light-gray);
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-roboto);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: var(--text-black);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: var(--spacing-lg);
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--primary-purple);
+        }
+        
+        .map-placeholder {
+            background: var(--primary-light-blue);
+            border-radius: 8px;
+            padding: var(--spacing-xl);
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .map-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .faq-section {
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .faq-question {
+            padding: var(--spacing-md);
+            background: var(--bg-light-gray);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding: 0 var(--spacing-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: var(--spacing-md);
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .business-hours {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            box-shadow: var(--shadow-card);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+        
+        .hour-day {
+            font-weight: bold;
+        }
+        
+        .hour-time {
+            color: var(--primary-green);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p class="text-white">Hubungi Kami (+62) 8123456789 WA Ready!</p>
+                <p class="text-white">|</p>
+                <a href="mailto:info@pahlawanbersih.co.id" class="text-white">info@pahlawanbersih.co.id</a>
+            </div>
+            <div class="top-bar-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">PahlawanBERSIH</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html">HOME</a></li>
+                <li class="nav-item"><a href="promo.html">PROMO</a></li>
+                <li class="nav-item"><a href="layanan.html">LAYANAN</a></li>
+                <li class="nav-item"><a href="testimonial.html">TESTIMONIAL</a></li>
+                <li class="nav-item"><a href="gallery.html">GALLERY</a></li>
+                <li class="nav-item"><a href="profile.html">PROFILE</a></li>
+                <li class="nav-item active"><a href="kontak.html">KONTAK</a></li>
+                <li class="nav-item">
+                    <a href="booking.html" class="booking-btn">
+                        <span>BOOKING</span>
+                        <div class="vertical-border">
+                            <span>→</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="hero-title" style="color: white; font-size: 42px;">Hubungi Kami 📞</h1>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9); font-size: 20px;">
+                Kami siap membantu kebutuhan cleaning service Anda
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section class="container">
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form fade-in">
+                <h2 style="margin-bottom: var(--spacing-lg); color: var(--primary-purple);">Kirim Pesan</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama lengkap">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="nama@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" required placeholder="0812-3456-7890">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Jenis Layanan</label>
+                        <select id="service" required>
+                            <option value="">Pilih Layanan</option>
+                            <option value="house">House Service</option>
+                            <option value="office">Office Service</option>
+                            <option value="garden">Gardening Service</option>
+                            <option value="deep">Deep Cleaning</option>
+                            <option value="car">Car Cleaning</option>
+                            <option value="consultation">Konsultasi Gratis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="5" required placeholder="Jelaskan kebutuhan Anda..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info fade-in">
+                <h2 style="margin-bottom: var(--spacing-lg); color: var(--primary-purple);">Informasi Kontak</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>Telepon</h3>
+                        <p><strong>Customer Service:</strong> (+62) 8123456789</p>
+                        <p><strong>WhatsApp:</strong> (+62) 8123456789</p>
+                        <p><small>Buka 24/7 untuk emergency service</small></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><strong>Informasi:</strong> info@pahlawanbersih.co.id</p>
+                        <p><strong>Booking:</strong> booking@pahlawanbersih.co.id</p>
+                        <p><strong>Kerjasama:</strong> partnership@pahlawanbersih.co.id</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div class="contact-details">
+                        <h3>Alamat Kantor</h3>
+                        <p><strong>Jl. Kebersihan No. 123</strong></p>
+                        <p>Kelurahan Bersih, Kecamatan Sehat</p>
+                        <p>Jakarta 12345, Indonesia</p>
+                    </div>
+                </div>
+                
+                <!-- Business Hours -->
+                <div class="business-hours">
+                    <h3 style="margin-bottom: var(--spacing-md);">Jam Operasional</h3>
+                    <div class="hour-item">
+                        <span class="hour-day">Senin - Jumat</span>
+                        <span class="hour-time">08:00 - 20:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="hour-day">Sabtu</span>
+                        <span class="hour-time">08:00 - 18:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="hour-day">Minggu</span>
+                        <span class="hour-time">09:00 - 16:00</span>
+                    </div>
+                </div>
+                
+                <!-- Social Links -->
+                <div style="margin-top: var(--spacing-xl);">
+                    <h3 style="margin-bottom: var(--spacing-md);">Follow Kami</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Facebook">f</a>
+                        <a href="#" class="social-link" title="Twitter">t</a>
+                        <a href="#" class="social-link" title="Instagram">ig</a>
+                        <a href="#" class="social-link" title="YouTube">▶</a>
+                        <a href="#" class="social-link" title="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map -->
+    <section class="container">
+        <div class="map-placeholder fade-in">
+            <div class="map-icon">🗺️</div>
+            <h3 style="margin-bottom: 10px; color: var(--primary-purple);">Lokasi Kami</h3>
+            <p style="margin-bottom: 20px; max-width: 400px;">
+                Kantor pusat kami berada di Jakarta. Kami melayani berbagai area di Jabodetabek 
+                dan kota-kota besar lainnya di Indonesia.
+            </p>
+            <button class="btn btn-outline" onclick="alert('Fitur peta akan ditampilkan di sini dengan integrasi Google Maps API')">
+                Buka di Google Maps
+            </button>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container faq-section">
+        <h2 style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--primary-purple);">
+            Pertanyaan yang Sering Diajukan ❓
+        </h2>
+        
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Berapa biaya layanan cleaning service?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Biaya bervariasi tergantung jenis layanan, luas area, dan tingkat kekotoran. 
+                    Untuk rumah dengan luas 100m², biaya mulai dari Rp 250.000. 
+                    Kami memberikan penawaran gratis setelah survei lokasi.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Berapa lama waktu yang dibutuhkan untuk satu sesi cleaning?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Waktu bervariasi tergantung luas dan kondisi area. 
+                    Untuk rumah 3 kamar biasanya membutuhkan 3-4 jam. 
+                    Tim kami akan memberikan estimasi waktu setelah melihat kondisi aktual.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apakah saya perlu menyediakan peralatan cleaning?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Tidak perlu. Kami membawa semua peralatan dan bahan pembersih yang diperlukan, 
+                    termasuk vacuum cleaner, mop, chemical ramah lingkungan, dan peralatan safety.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apakah ada garansi untuk layanan?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, kami memberikan garansi kepuasan 24 jam. Jika ada area yang belum bersih 
+                    sesuai standar, tim kami akan kembali tanpa biaya tambahan.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Bagaimana cara booking layanan?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Anda bisa booking melalui:
+                    <ul>
+                        <li>Website: Isi form booking online</li>
+                        <li>WhatsApp: (+62) 8123456789</li>
+                        <li>Telepon: (+62) 8123456789</li>
+                        <li>Email: booking@pahlawanbersih.co.id</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: var(--primary-green); color: white; padding: var(--spacing-xl) 0; text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: var(--spacing-md);">Siap Memesan Layanan?</h2>
+            <p style="margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Hubungi kami sekarang untuk konsultasi gratis dan penawaran khusus. 
+                Tim customer service kami siap membantu 24/7.
+            </p>
+            <a href="booking.html" class="btn" style="background: white; color: var(--primary-green); padding: 15px 40px; font-size: 18px;">
+                Booking Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">PahlawanBERSIH</div>
+                    <p class="footer-description">
+                        Menyediakan jasa cleaning service profesional untuk rumah dan kantor Anda sejak 2015. 
+                        Komitmen kami adalah memberikan layanan terbaik dengan hasil maksimal.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><strong>Telepon:</strong> (+62) 8123456789</p>
+                    <p><strong>Email:</strong> info@pahlawanbersih.co.id</p>
+                    <p><strong>Alamat:</strong> Jl. Kebersihan No. 123, Jakarta</p>
+                    <div class="top-bar-icons" style="margin-top: 15px;">
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PahlawanBERSIH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Terima kasih! Pesan Anda telah berhasil dikirim. Tim kami akan menghubungi Anda dalam 1x24 jam.');
+                this.reset();
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+        
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, '');
+                if (value.length > 3) {
+                    value = value.substring(0, 4) + '-' + value.substring(4);
+                }
+                if (value.length > 8) {
+                    value = value.substring(0, 9) + '-' + value.substring(9, 13);
+                }
+                this.value = value;
+            });
+        }
+        
+        // Social links
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                alert(`Anda akan diarahkan ke halaman ${platform} kami. Fitur ini membutuhkan URL sosial media yang valid.`);
+            });
+        });
+    </script>
+</body>
+</html>

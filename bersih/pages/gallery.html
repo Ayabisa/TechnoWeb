@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery PahlawanBERSIH - Dokumentasi hasil pekerjaan kami">
+    <title>Gallery - PahlawanBERSIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .gallery-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #2ecc71 100%);
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-roboto);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .filter-btn:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-placeholder {
+            font-size: 64px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.2);
+        }
+        
+        .gallery-item p {
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* atau sesuaikan */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .gallery-category {
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .category-title {
+            font-size: 24px;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-black);
+            border-bottom: 2px solid var(--primary-green);
+            padding-bottom: 10px;
+        }
+        
+        .video-gallery {
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .video-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .video-placeholder {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <p class="text-white">Hubungi Kami (+62) 8123456789 WA Ready!</p>
+                <p class="text-white">|</p>
+                <a href="mailto:info@pahlawanbersih.co.id" class="text-white">info@pahlawanbersih.co.id</a>
+            </div>
+            <div class="top-bar-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">PahlawanBERSIH</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html">HOME</a></li>
+                <li class="nav-item"><a href="promo.html">PROMO</a></li>
+                <li class="nav-item"><a href="layanan.html">LAYANAN</a></li>
+                <li class="nav-item"><a href="testimonial.html">TESTIMONIAL</a></li>
+                <li class="nav-item active"><a href="gallery.html">GALLERY</a></li>
+                <li class="nav-item"><a href="profile.html">PROFILE</a></li>
+                <li class="nav-item"><a href="kontak.html">KONTAK</a></li>
+                <li class="nav-item">
+                    <a href="booking.html" class="booking-btn">
+                        <span>BOOKING</span>
+                        <div class="vertical-border">
+                            <span>→</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1 class="hero-title" style="color: white; font-size: 42px;">Gallery Hasil Pekerjaan 🏆</h1>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9); font-size: 20px;">
+                Dokumentasi sebelum dan setelah menggunakan layanan kami
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="container">
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="house">House Service</button>
+            <button class="filter-btn" data-filter="office">Office Service</button>
+            <button class="filter-btn" data-filter="garden">Gardening</button>
+            <button class="filter-btn" data-filter="deep">Deep Cleaning</button>
+            <button class="filter-btn" data-filter="car">Car Cleaning</button>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="container">
+        <div class="gallery-grid">
+          <!-- Item 1 -->
+        <div class="gallery-item fade-in" data-category="house">
+            <img src="../images/rumah1.jpg" alt="Sesudah">
+            <p>Hasil House Cleaning</p>
+            <div class="gallery-overlay">
+                <h3>Transformasi Rumah</h3>~
+                <p>House Cleaning - Kamar Mandi</p>
+            </div>
+        </div>
+            
+            <!-- Item 2 -->
+            <div class="gallery-item fade-in" data-category="office">
+                <div class="gallery-placeholder">🏢</div>
+                <p>Kantor Bersih</p>
+                <div class="gallery-overlay">
+                    <h3>Office Cleaning</h3>
+                    <p>Perkantoran di Sudirman - Area kerja 500m²</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="gallery-item fade-in" data-category="garden">
+                <img src="../images/taman3.jpeg" alt="Perawatan Taman">
+                <p>Hasil Perawatan Taman</p>
+                <div class="gallery-overlay">
+                    <h3>Gardening</h3>
+                    <p>Taman Rapi</p>
+                </div>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="gallery-item fade-in" data-category="deep">
+                <div class="gallery-placeholder">✨</div>
+                <p>Deep Cleaning</p>
+                <div class="gallery-overlay">
+                    <h3>Deep Cleaning</h3>
+                    <p>Rumah 2 lantai - Pembersihan mendalam semua area</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="gallery-item fade-in" data-category="car">
+                <div class="gallery-placeholder">🚗</div>
+                <p>Car Wash Premium</p>
+                <div class="gallery-overlay">
+                    <h3>Car Cleaning</h3>
+                    <p>Mobil SUV - Cuci eksterior & interior premium</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+            
+            <!-- Item 6 -->
+            <div class="gallery-item fade-in" data-category="house">
+                <div class="gallery-placeholder">🛋️</div>
+                <p>Sofa Cleaning</p>
+                <div class="gallery-overlay">
+                    <h3>Sofa Cleaning</h3>
+                    <p>Pembersihan sofa kulit & kain - Hasil seperti baru</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+            
+            <!-- Item 7 -->
+            <div class="gallery-item fade-in" data-category="office">
+                <div class="gallery-placeholder">🧹</div>
+                <p>Industrial Cleaning</p>
+                <div class="gallery-overlay">
+                    <h3>Industrial Area</h3>
+                    <p>Pembersihan area pabrik - Sanitasi menyeluruh</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+            
+            <!-- Item 8 -->
+            <div class="gallery-item fade-in" data-category="garden">
+                <div class="gallery-placeholder">🌸</div>
+                <p>Landscape Design</p>
+                <div class="gallery-overlay">
+                    <h3>Landscaping</h3>
+                    <p>Desain taman minimalis - Perawatan rutin</p>
+                    <button class="btn" style="margin-top: 10px; background: white; color: var(--primary-green);">Lihat Detail</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <h3 id="lightbox-title">Judul Gambar</h3>
+            <div class="gallery-placeholder" id="lightbox-image" style="font-size: 96px; margin: 20px 0;">🏠</div>
+            <p id="lightbox-description">Deskripsi gambar akan ditampilkan di sini.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">PahlawanBERSIH</div>
+                    <p class="footer-description">
+                        Menyediakan jasa cleaning service profesional untuk rumah dan kantor Anda sejak 2015. 
+                        Komitmen kami adalah memberikan layanan terbaik dengan hasil maksimal.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="layanan.html">Layanan</a></li>
+                        <li><a href="promo.html">Promo</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><strong>Telepon:</strong> (+62) 8123456789</p>
+                    <p><strong>Email:</strong> info@pahlawanbersih.co.id</p>
+                    <p><strong>Alamat:</strong> Jl. Kebersihan No. 123, Jakarta</p>
+                    <div class="top-bar-icons" style="margin-top: 15px;">
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/instagram.svg" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PahlawanBERSIH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxDescription = document.getElementById('lightbox-description');
+        
+        // Gallery item click
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('p').textContent;
+                const icon = this.querySelector('.gallery-placeholder').textContent;
+                const overlayText = this.querySelector('.gallery-overlay h3')?.textContent || 'Detail';
+                const overlayDesc = this.querySelector('.gallery-overlay p')?.textContent || 'Informasi lengkap tentang pekerjaan ini';
+                
+                lightboxTitle.textContent = overlayText;
+                lightboxImage.textContent = icon;
+                lightboxDescription.textContent = overlayDesc;
+                
+                lightbox.style.display = 'flex';
+            });
+        });
+        
+        // Close lightbox
+        lightboxClose.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+        
+        // Close lightbox when clicking outside
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+        
+        // Video buttons
+        document.querySelectorAll('.video-item .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Video akan ditampilkan di sini. Fitur ini membutuhkan integrasi dengan platform video seperti YouTube atau Vimeo.');
+            });
+        });
+    </script>
+</body>
+</html> 
